@@ -1,5 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
+import functions.Function;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class SleepTrackerApp {
+    private final List<Function> functions = new ArrayList<>();
 
     public static void main(String[] args) {
         if (args.length < 1) {
