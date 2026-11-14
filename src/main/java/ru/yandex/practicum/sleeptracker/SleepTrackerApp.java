@@ -1,5 +1,6 @@
 package ru.yandex.practicum.sleeptracker;
 
+import functions.AllSleepingSessions;
 import functions.Function;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class SleepTrackerApp {
-    private final List<Function> functions = new ArrayList<>();
+    private final static List<Function> functions = new ArrayList<>();
 
     public static void main(String[] args) {
         if (args.length < 1) {
@@ -40,6 +41,7 @@ public class SleepTrackerApp {
         } catch (DateTimeException ex) {
             System.out.println("Произошла ошибка при преобразовании файла в сессии сна");
         }
+        functions.add(new AllSleepingSessions());
     }
 
     private static List<String> readFile(Path path) throws IOException {
