@@ -5,9 +5,8 @@ import ru.yandex.practicum.sleeptracker.SleepingSession;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 public class SleeplessNightsCounter implements Function {
@@ -15,21 +14,27 @@ public class SleeplessNightsCounter implements Function {
 
     @Override
     public SleepAnalysisResult<Long> apply(List<SleepingSession> sessions) {
-        LocalDate firstDate = sessions.get(0).getStart().toLocalDate();
-        LocalDate lastDate = sessions.get(sessions.size() - 1).getFinish().toLocalDate();
+        if (sessions == null || sessions.isEmpty()) {
+            return new SleepAnalysisResult<>(0L, "Количество бессонных ночей");
+        }
 
-        LocalTime firstTime = sessions.get(0).getStart().toLocalTime();
-        LocalDate periodStart = firstTime.isAfter(LocalTime.NOON)
-                ? firstDate.plusDays(1)
-                : firstDate;
+        LocalDateTime firstStart = sessions.get(0).getStart();
+        LocalDateTime lastFinish = sessions.get(sessions.size() - 1).getFinish();
 
-        long totalNights = Period.between(periodStart, lastDate).getDays();
+        // Если первая сессия началась после 12:00, первая потенциальная ночь — следующая; иначе — текущая
+        LocalDate periodStart = firstStart.toLocalTime().isAfter(LocalTime.NOON)
+                ? firstStart.toLocalDate().plusDays(1)
+                : firstStart.toLocalDate();
 
-        List<LocalDate> allNights = LongStream.range(0, Math.max(totalNights, 0))
+        // Если последняя сессия закончилась ровно в 00:00, ночь этого дня ещё не началась
+        LocalDate periodEnd = lastFinish.toLocalTime().equals(LocalTime.MIDNIGHT)
+                ? lastFinish.toLocalDate().minusDays(1)
+                : lastFinish.toLocalDate();
+
+        long totalNights = ChronoUnit.DAYS.between(periodStart, periodEnd) + 1;
+
+        long sleeplessCount = LongStream.range(0, Math.max(totalNights, 0))
                 .mapToObj(periodStart::plusDays)
-                .collect(Collectors.toList());
-
-        long sleeplessCount = allNights.stream()
                 .filter(nightDate -> !hasNightSleep(sessions, nightDate))
                 .count();
 

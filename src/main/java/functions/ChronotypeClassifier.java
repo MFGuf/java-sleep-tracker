@@ -2,6 +2,8 @@ package functions;
 
 import ru.yandex.practicum.sleeptracker.SleepingSession;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,10 @@ public class ChronotypeClassifier implements Function {
 
     @Override
     public SleepAnalysisResult<String> apply(List<SleepingSession> sessions) {
+        if (sessions == null || sessions.isEmpty()) {
+            return new SleepAnalysisResult<>("Голубь", "Хронотип пользователя");
+        }
+
         Map<NightType, Long> counts = sessions.stream()
                 .filter(this::isNightSession)
                 .map(this::classifyNight)
@@ -27,7 +33,6 @@ public class ChronotypeClassifier implements Function {
         } else if (larks > owls && larks > pigeons) {
             chronotype = "Жаворонок";
         } else {
-            // По ТЗ: при сомнениях или равенстве — Голубь
             chronotype = "Голубь";
         }
 
@@ -35,21 +40,31 @@ public class ChronotypeClassifier implements Function {
     }
 
     private boolean isNightSession(SleepingSession session) {
-        LocalTime startTime = session.getStart().toLocalTime();
-        LocalTime finishTime = session.getFinish().toLocalTime();
+        LocalDate startDate = session.getStart().toLocalDate();
+        LocalDate finishDate = session.getFinish().toLocalDate();
 
-        return startTime.isBefore(LocalTime.of(6, 0))
-                || finishTime.isAfter(LocalTime.MIDNIGHT);
+        return overlapsNightWindow(session, startDate)
+                || overlapsNightWindow(session, finishDate);
+    }
+
+    private boolean overlapsNightWindow(SleepingSession session, LocalDate date) {
+        LocalDateTime windowStart = date.atStartOfDay();
+        LocalDateTime windowEnd = date.atTime(6, 0);
+        return session.getStart().isBefore(windowEnd)
+                && session.getFinish().isAfter(windowStart);
     }
 
     private NightType classifyNight(SleepingSession session) {
         LocalTime fallAsleep = session.getStart().toLocalTime();
         LocalTime wakeUp = session.getFinish().toLocalTime();
 
-        boolean isOwl = fallAsleep.isAfter(LocalTime.of(23, 0))
-                && wakeUp.isAfter(LocalTime.of(9, 0));
-        boolean isLark = fallAsleep.isBefore(LocalTime.of(22, 0))
-                && wakeUp.isBefore(LocalTime.of(7, 0));
+        boolean lateFallAsleep = fallAsleep.isAfter(LocalTime.of(23, 0))
+                || fallAsleep.isBefore(LocalTime.of(6, 0));
+        boolean isOwl = lateFallAsleep && wakeUp.isAfter(LocalTime.of(9, 0));
+
+        boolean eveningFallAsleep = fallAsleep.isAfter(LocalTime.of(6, 0))
+                && fallAsleep.isBefore(LocalTime.of(22, 0));
+        boolean isLark = eveningFallAsleep && wakeUp.isBefore(LocalTime.of(7, 0));
 
         if (isOwl) return NightType.OWL;
         if (isLark) return NightType.LARK;

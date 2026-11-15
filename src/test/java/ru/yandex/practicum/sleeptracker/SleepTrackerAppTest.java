@@ -103,10 +103,11 @@ class SleepTrackerAppTest {
         List<SleepingSession> sessions = List.of(
                 session("01.10.25 23:00", "02.10.25 03:00", SleepQuality.GOOD),
                 session("02.10.25 14:00", "02.10.25 16:00", SleepQuality.NORMAL),
-                session("03.10.25 01:00", "03.10.25 05:00", SleepQuality.BAD)
+                session("04.10.25 01:00", "04.10.25 05:00", SleepQuality.BAD)
         );
         assertEquals(1L, new SleeplessNightsCounter().apply(sessions).getValue());
     }
+
 
     @Test
     void sleeplessNights_allNightsHaveSleep() {
@@ -132,10 +133,11 @@ class SleepTrackerAppTest {
     void sleeplessNights_firstSessionAfterNoon_edgeCase() {
         List<SleepingSession> sessions = List.of(
                 session("01.10.25 14:00", "01.10.25 16:00", SleepQuality.NORMAL),
-                session("03.10.25 10:00", "03.10.25 12:00", SleepQuality.NORMAL)
+                session("02.10.25 10:00", "02.10.25 12:00", SleepQuality.NORMAL)
         );
         assertEquals(1L, new SleeplessNightsCounter().apply(sessions).getValue());
     }
+
 
     @Test
     void sleeplessNights_sessionCrossesMidnight_countsForBothNights() {
