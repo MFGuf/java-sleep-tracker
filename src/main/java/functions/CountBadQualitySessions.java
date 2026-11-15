@@ -2,15 +2,14 @@ package functions;
 
 import ru.yandex.practicum.sleeptracker.SleepQuality;
 import ru.yandex.practicum.sleeptracker.SleepingSession;
-
 import java.util.List;
 
-public class CountBADQualuty implements Function {
+public class CountBadQualitySessions implements Function {
     @Override
     public SleepAnalysisResult<Long> apply(List<SleepingSession> sessions) {
-        long badQuality = sessions.stream()
+        long badQualityCount = sessions.stream()
                 .filter(session -> session.getQuality() == SleepQuality.BAD)
                 .count();
-        return new SleepAnalysisResult<>(badQuality, "Количестко снов с плохим качеством сна");
+        return new SleepAnalysisResult<>(badQualityCount, "Количество сессий с плохим качеством сна");
     }
 }

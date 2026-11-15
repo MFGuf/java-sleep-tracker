@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3068393b-3b61-4707-874e-a0e437a509d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/functions/ChronotypeClassifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/functions/SleeplessNightsCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/java-sleep-tracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/java-sleep-tracker.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/functions/AverageSleepDuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functions/AverageSleepDuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/functions/CountBADQualuty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functions/CountBadQualitySessions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/sleeptracker/SleepTrackerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/sleeptracker/SleepTrackerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/sleeptracker/SleepTrackerAppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/sleeptracker/SleepTrackerAppTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleModuleStateConfig" initialized="true" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3M37MeS4VHMujFc0eZCGwoHGRLh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in java-sleep-tracker.executor": "Run",
+    "JUnit.SleepTrackerAppTest.executor": "Run",
+    "JUnit.test in java-sleep-tracker.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/sergey/IT/java-sleep-tracker",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager" selected="JUnit.SleepTrackerAppTest">
+    <configuration name="All in java-sleep-tracker" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sleep-tracker" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SleepTrackerAppTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sleep-tracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.yandex.practicum.sleeptracker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.yandex.practicum.sleeptracker" />
+      <option name="MAIN_CLASS_NAME" value="ru.yandex.practicum.sleeptracker.SleepTrackerAppTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in java-sleep-tracker" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="java-sleep-tracker" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/src/test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All in java-sleep-tracker" />
+      <item itemvalue="JUnit.SleepTrackerAppTest" />
+      <item itemvalue="JUnit.test in java-sleep-tracker" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SleepTrackerAppTest" />
+        <item itemvalue="JUnit.All in java-sleep-tracker" />
+        <item itemvalue="JUnit.test in java-sleep-tracker" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3068393b-3b61-4707-874e-a0e437a509d3" name="Changes" comment="" />
+      <created>1794567358468</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1794567358468</updated>
+    </task>
+    <servers />
+  </component>
+</project>
